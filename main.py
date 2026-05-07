@@ -97,6 +97,11 @@ def forecast(req: ForecastRequest):
         train_size = int(
             len(series) * float(req.split_ratio)
         )
+        if train_size < 3:
+            train_size = 3
+        
+        if train_size >= len(series):
+            train_size = len(series) - 1
 
         train = series[:train_size]
 
@@ -284,7 +289,9 @@ def forecast(req: ForecastRequest):
         }
 
     except Exception as e:
-
+        
+        print("FORECAST ERROR:", str(e))
+        
         return {
             "error": str(e)
         }
