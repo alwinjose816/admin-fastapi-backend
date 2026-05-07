@@ -38,7 +38,7 @@ class ForecastRequest(BaseModel):
 
     future_days: int = 7
 
-    split_ratio: float = 0.8
+    split_ratio: splitRatio / 100
 
 
 class ClusterItem(BaseModel):
