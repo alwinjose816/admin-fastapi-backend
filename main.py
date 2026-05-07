@@ -95,7 +95,7 @@ def forecast(req: ForecastRequest):
         series = pd.Series(req.values)
 
         train_size = int(
-            len(series) * req.split_ratio
+            len(series) * float(req.split_ratio)
         )
 
         train = series[:train_size]
